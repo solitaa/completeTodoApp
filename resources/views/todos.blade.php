@@ -9,6 +9,15 @@
     </div>
     <hr>
     @foreach($todos as $todo)
-        <p>{{$todo->todo}}</p>
+        <p>{{$todo->todo}} 
+            <a href="{{ route('todo.update', ['id' => $todo->id])}}" class="btn btn-primary btn-sm">update</a>
+            <a href="{{ route('todo.delete', ['id' => $todo->id])}}" class="btn btn-danger btn-sm">x</a>
+            @if(!$todo->completed)
+                <a href="{{ route('todo.completed', ['id' => $todo->id])}}" class="btn btn-success btn-sm">Mark as completed</a>
+            @else
+                <span>completed</span>
+            @endif
+        </p>
+        
     @endforeach
 @endsection
